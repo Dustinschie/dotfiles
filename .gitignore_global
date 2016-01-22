@@ -84,3 +84,9 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+Desktop.ini
+
+# Compiled Python files
+*.pyc
+
+

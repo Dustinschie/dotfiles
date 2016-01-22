@@ -1,6 +1,6 @@
 [user]
-	email = mattr.antonelli@gmail.com
-	name = Matt Antonelli
+	email = me@dustinschie.com
+	name = Dustin Schie
 [push]
 	default = matching
 [alias]
@@ -16,3 +16,5 @@
 	tool = vimdiff
 [difftool]
 	prompt = false
+[credential]
+	helper = osxkeychain

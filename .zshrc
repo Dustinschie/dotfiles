@@ -85,3 +85,14 @@ function last-migration() {
 alias vlmg='vim "$(last-migration)"'
 alias rmlmg='rm "$(last-migration)"'
 
+# homebrew
+PATH="/usr/local/bin:$PATH"
+
+# Virtual Environment
+WORKON_HOME="$HOME/.virtualenvs"
+source /usr/local/bin/virtualenvwrapper.sh
+
+PROJECT_HOME="$HOME/Projects"
+
+
+
