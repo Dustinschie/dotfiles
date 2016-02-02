@@ -88,11 +88,19 @@ alias rmlmg='rm "$(last-migration)"'
 # homebrew
 PATH="/usr/local/bin:$PATH"
 
-# Virtual Environment
-WORKON_HOME="$HOME/.virtualenvs"
-source /usr/local/bin/virtualenvwrapper.sh
+# pyenv
+if which pyenv > /dev/null;
+  then eval "$(pyenv init -)";
+fi
 
-PROJECT_HOME="$HOME/Projects"
+# pyenv/virtualenvwrapper; prefer pyenv
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 
+# NVM
+export NVM_DIR=~/.nvm
+. $(brew --prefix nvm)/nvm.sh
 
-
+# rbenv
+if which rbenv > /dev/null;
+  then eval "$(rbenv init -)";
+fi
