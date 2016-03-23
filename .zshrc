@@ -10,7 +10,7 @@ fi
 ZSH_THEME="robbyrussell"
 
 # zsh plugins
-plugins=(git rails ruby rake rbenv tmux ssh-agent)
+plugins=(git rails ruby rake rbenv tmux ssh-agent osx python brew virtualenvwrapper)
 
 # turn off auto-updating, it will be handled by .dotfiles
 DISABLE_AUTO_UPDATE=true
