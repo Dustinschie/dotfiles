@@ -10,7 +10,7 @@ fi
 ZSH_THEME="robbyrussell"
 
 # zsh plugins
-plugins=(git rails ruby rake rbenv tmux ssh-agent)
+plugins=(git rails ruby rake rbenv tmux ssh-agent osx python brew virtualenvwrapper)
 
 # turn off auto-updating, it will be handled by .dotfiles
 DISABLE_AUTO_UPDATE=true
@@ -85,3 +85,22 @@ function last-migration() {
 alias vlmg='vim "$(last-migration)"'
 alias rmlmg='rm "$(last-migration)"'
 
+# homebrew
+PATH="/usr/local/bin:$PATH"
+
+# pyenv
+if which pyenv > /dev/null;
+  then eval "$(pyenv init -)";
+fi
+
+# pyenv/virtualenvwrapper; prefer pyenv
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+
+# NVM
+export NVM_DIR=~/.nvm
+. $(brew --prefix nvm)/nvm.sh
+
+# rbenv
+if which rbenv > /dev/null;
+  then eval "$(rbenv init -)";
+fi
