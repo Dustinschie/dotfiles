@@ -1,5 +1,5 @@
 [user]
-	email = me@dustinschie.com
+	email = dustin@schie.io
 	name = Dustin Schie
 [push]
 	default = matching
@@ -16,8 +16,6 @@
 	tool = vimdiff
 [difftool]
 	prompt = false
-[credential]
-	helper = osxkeychain
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
