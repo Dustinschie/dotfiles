@@ -10,7 +10,7 @@ fi
 ZSH_THEME="robbyrussell"
 
 # zsh plugins
-plugins=(git rails ruby rake rbenv tmux ssh-agent osx python brew virtualenvwrapper)
+plugins=(git rails ruby rake rbenv tmux ssh-agent python pyenv pip npm node)
 
 # turn off auto-updating, it will be handled by .dotfiles
 DISABLE_AUTO_UPDATE=true
@@ -89,16 +89,48 @@ alias rmlmg='rm "$(last-migration)"'
 PATH="/usr/local/bin:$PATH"
 
 # pyenv
-if which pyenv > /dev/null;
-  then eval "$(pyenv init -)";
+export PYENV_ROOT="$HOME/.pyenv"
+if [ -d "${PYENV_ROOT}" ]; then
+  # pyenv/virtualenvwrapper; prefer pyenv
+  export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  if which pyenv > /dev/null; then
+    eval "$(pyenv init -)";
+    eval "$(pyenv virtualenv-init -)"
+  fi
+else
 fi
 
-# pyenv/virtualenvwrapper; prefer pyenv
-export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 
 # NVM
 export NVM_DIR=~/.nvm
+if which brew > /dev/null; then
 . $(brew --prefix nvm)/nvm.sh
+else
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+fi
+
+if which nvm > /dev/null; then
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+       nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+fi
 
 # rbenv
 if which rbenv > /dev/null;
