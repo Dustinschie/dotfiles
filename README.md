@@ -13,7 +13,7 @@ upon relog, you will be prompted to setup `.zshrc`. Select the option that reads
 ##### Install tmux, vim, git (debian)
 ```bash
 $ sudo apt-get install tmux git vim
-$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh | bash
+$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
 ```
 
 ##### Setting up dotfiles
