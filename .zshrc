@@ -104,11 +104,7 @@ fi
 
 # NVM
 export NVM_DIR=~/.nvm
-if which brew > /dev/null; then
-. $(brew --prefix nvm)/nvm.sh
-else
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-fi
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 if which nvm > /dev/null; then
 autoload -U add-zsh-hook
@@ -136,3 +132,6 @@ fi
 if which rbenv > /dev/null;
   then eval "$(rbenv init -)";
 fi
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+alias tsc='tmux new-session -s $(basename "$PWD")'
